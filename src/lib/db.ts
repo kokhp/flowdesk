@@ -16,8 +16,10 @@ import {
 type SqlQuery = (strings: TemplateStringsArray, ...values: any[]) => Promise<Record<string, any>[]>;
 
 let _sql: SqlQuery | null = null;
+let _remoteFailed = false;
 
-const USE_LOCAL_DB = !process.env.DATABASE_URL;
+const FORCE_REMOTE_DB = process.env.USE_REMOTE_DB === 'true';
+const USE_LOCAL_DB = !FORCE_REMOTE_DB && !process.env.DATABASE_URL;
 
 function applyMutation(db: LocalDb, text: string, values: any[]): void {
   const sql = text.replace(/\s+/g, ' ').trim().toLowerCase();
@@ -119,6 +121,14 @@ function applyMutation(db: LocalDb, text: string, values: any[]): void {
     return;
   }
 
+  if (sql.startsWith('update services set active')) {
+    const [active, updatedAt, id, userId] = values as [boolean, string, string, string];
+    db.services = db.services.map((service) =>
+      service.id === id && service.user_id === userId ? { ...service, active, updated_at: updatedAt } : service
+    );
+    return;
+  }
+
   if (sql.startsWith('update services set')) {
     const [name, description, durationMinutes, price, active, updatedAt, id, userId] = values as [
       string,
@@ -134,14 +144,6 @@ function applyMutation(db: LocalDb, text: string, values: any[]): void {
       service.id === id && service.user_id === userId
         ? { ...service, name, description, duration_minutes: durationMinutes, price, active, updated_at: updatedAt }
         : service
-    );
-    return;
-  }
-
-  if (sql.startsWith('update services set active')) {
-    const [active, updatedAt, id, userId] = values as [boolean, string, string, string];
-    db.services = db.services.map((service) =>
-      service.id === id && service.user_id === userId ? { ...service, active, updated_at: updatedAt } : service
     );
     return;
   }
@@ -264,7 +266,7 @@ function queryLocalDb(strings: TemplateStringsArray, values: any[]): Promise<Rec
 }
 
 export function db(): SqlQuery {
-  if (USE_LOCAL_DB) {
+  if (USE_LOCAL_DB || _remoteFailed) {
     return (async (strings: TemplateStringsArray, ...values: any[]) =>
       queryLocalDb(strings, values)) as SqlQuery;
   }
@@ -275,7 +277,14 @@ export function db(): SqlQuery {
     }
     _sql = neon(url) as SqlQuery;
   }
-  return _sql;
+  return (async (strings: TemplateStringsArray, ...values: any[]) => {
+    try {
+      return await _sql!(strings, ...values);
+    } catch {
+      _remoteFailed = true;
+      return queryLocalDb(strings, values);
+    }
+  }) as SqlQuery;
 }
 
 // For cases where you need a fresh connection (e.g., different database)

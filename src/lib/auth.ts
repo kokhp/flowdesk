@@ -28,10 +28,12 @@ export async function createSession(userId: string): Promise<string> {
   const sql = db();
   await sql`INSERT INTO sessions (user_id, token, expires_at) VALUES (${userId}, ${token}, ${expiresAt.toISOString()})`;
 
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL || '';
+  const isSecureApp = appUrl.startsWith('https://');
   const cookieStore = cookies();
   cookieStore.set(SESSION_COOKIE, token, {
     httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
+    secure: process.env.NODE_ENV === 'production' && isSecureApp,
     sameSite: 'lax',
     path: '/',
     expires: expiresAt,
