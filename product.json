@@ -1,0 +1,429 @@
+{
+  "name": "FlowDesk",
+  "slug": "flowdesk",
+  "tagline": "Run your service business without being there",
+  "description": "FlowDesk is the all-in-one operations platform for appointment-based service businesses. Manage scheduling, collect no-show deposits, automate client communication, and coordinate staff — so your business thrives even when you step away.",
+  "category": "BETTER_ALTERNATIVE",
+  "pain_point": "Service business owners lose 25% of revenue to no-shows and can't step away because every operational decision requires their personal involvement.",
+  "target_audience": "Owners and managers of appointment-based service businesses: medical practices, dental offices, salons, fitness studios, auto repair shops, consulting firms, and professional services with 2-50 staff.",
+  "competitors": [
+    "Mindbody",
+    "Square Appointments",
+    "Acuity Scheduling",
+    "Calendly",
+    "SimplePractice",
+    "Vagaro",
+    "Jane App"
+  ],
+  "competitive_gaps": [
+    "No affordable platform combines scheduling with automatic deposit collection and no-show enforcement",
+    "Existing tools are industry-locked (healthcare, fitness, beauty) with no cross-vertical solution",
+    "No competitor provides operational independence features like staff decision playbooks and escalation paths",
+    "Competitors charge $100+/mo for features that should be standard at $29-49/mo",
+    "Most tools lack waitlist-to-booking automation when cancellations occur"
+  ],
+  "features": [
+    {
+      "name": "Service Catalog Management",
+      "description": "Define services with pricing, duration, provider assignments, availability windows, and add-on options. Support variable pricing for peak/off-peak hours.",
+      "layer": 0,
+      "priority": "critical",
+      "acceptance_criteria": [
+        "Owner can create, edit, and archive services with name, description, duration, and price",
+        "Services can be assigned to specific staff members and locations",
+        "Variable pricing rules can be set for peak/off-peak time slots",
+        "Service categories and add-ons can be configured and displayed on the booking page"
+      ]
+    },
+    {
+      "name": "Smart Appointment Scheduling",
+      "description": "Multi-provider calendar with drag-and-drop, conflict detection, buffer times, recurring appointments, and real-time availability calculation.",
+      "layer": 1,
+      "priority": "critical",
+      "acceptance_criteria": [
+        "Calendar displays all providers with day/week/month views and drag-and-drop rescheduling",
+        "System prevents double-booking and enforces buffer times between appointments",
+        "Recurring appointments can be created with weekly, biweekly, or monthly patterns",
+        "Real-time availability updates across all booking channels within 2 seconds"
+      ]
+    },
+    {
+      "name": "Client Management CRM",
+      "description": "Client profiles with contact info, full visit history, preferences, internal notes, lifetime value tracking, and no-show scoring.",
+      "layer": 2,
+      "priority": "critical",
+      "acceptance_criteria": [
+        "Each client has a profile page showing contact info, visit history, and financial summary",
+        "Client no-show score auto-calculates based on history and flags repeat offenders",
+        "Tags and custom segments can be applied for targeted communication",
+        "Duplicate client records can be detected and merged"
+      ]
+    },
+    {
+      "name": "Online Booking Portal",
+      "description": "Branded, embeddable booking widget showing real-time availability where clients select service, provider, date/time, and pay deposits to confirm.",
+      "layer": 2,
+      "priority": "critical",
+      "acceptance_criteria": [
+        "Public booking page displays available services, providers, and time slots in real time",
+        "Clients can complete booking including deposit payment in under 60 seconds",
+        "Booking widget is embeddable on external websites via iframe or script tag",
+        "Custom intake forms can be attached per service type and are required before confirmation"
+      ]
+    },
+    {
+      "name": "No-Show Protection System",
+      "description": "Configurable deposit requirements per service with automatic forfeiture on no-show, client no-show scoring, and waitlist promotion to fill empty slots.",
+      "layer": 3,
+      "priority": "critical",
+      "acceptance_criteria": [
+        "Deposits can be required per service as flat fee or percentage of service price",
+        "No-show is auto-detected when client fails to check in within configurable grace period",
+        "Deposit is automatically forfeited and client no-show score is incremented on confirmed no-show",
+        "Waitlisted clients are automatically notified and offered the open slot"
+      ]
+    },
+    {
+      "name": "Payment Processing via Stripe",
+      "description": "Collect deposits, full payments, and tips through Stripe. Support credit cards, Apple Pay, Google Pay with automatic refund processing per cancellation policy.",
+      "layer": 3,
+      "priority": "critical",
+      "acceptance_criteria": [
+        "Stripe Connect onboarding completes in under 5 minutes from settings page",
+        "Deposits, full payments, and tips can be collected at booking or point-of-sale",
+        "Automatic refunds process according to the configured cancellation policy tiers",
+        "Payment methods are securely stored for repeat clients with PCI-compliant tokenization"
+      ]
+    },
+    {
+      "name": "Automated Reminders & Follow-ups",
+      "description": "Configurable SMS and email reminders at custom intervals before appointments, confirmation requests with one-click confirm/cancel, and post-visit follow-ups.",
+      "layer": 4,
+      "priority": "critical",
+      "acceptance_criteria": [
+        "Reminders can be configured at multiple intervals (e.g., 24h, 2h before) per service type",
+        "Clients can confirm or cancel directly from the reminder message with one click",
+        "Post-visit follow-up messages send automatically with optional review request link",
+        "Message templates support merge tags for client name, service, date, provider, and location"
+      ]
+    },
+    {
+      "name": "Waitlist Management",
+      "description": "Clients join a waitlist for fully-booked time slots. Automatic notifications when slots open from cancellations with priority-based ordering.",
+      "layer": 4,
+      "priority": "high",
+      "acceptance_criteria": [
+        "Clients can add themselves to waitlists for specific services, dates, or time ranges",
+        "When a cancellation creates an open slot, the top waitlisted client is auto-notified",
+        "Waitlist supports priority ordering (first-come or VIP tier)",
+        "Conversion rate from waitlist to booking is tracked in reporting"
+      ]
+    },
+    {
+      "name": "Staff Scheduling & Management",
+      "description": "Define staff availability, working hours, time-off requests, skill-based service assignments, and workload balancing with a self-service staff portal.",
+      "layer": 5,
+      "priority": "high",
+      "acceptance_criteria": [
+        "Staff members can set their own availability and submit time-off requests for manager approval",
+        "Services are assignable to staff based on skills and certifications",
+        "Dashboard shows staff utilization percentage and workload distribution across the team",
+        "Staff portal allows viewing personal schedule, appointment details, and client notes"
+      ]
+    },
+    {
+      "name": "Team Activity Feed",
+      "description": "Real-time feed of bookings, cancellations, check-ins, payments, and notes. Filterable by staff, service, or event type with @mention support.",
+      "layer": 5,
+      "priority": "high",
+      "acceptance_criteria": [
+        "Activity feed updates in real time showing all booking, payment, and operational events",
+        "Feed is filterable by staff member, event type, and date range",
+        "Team members can be @mentioned in comments that trigger notifications",
+        "Critical events (no-shows, large payments, escalations) are visually highlighted"
+      ]
+    },
+    {
+      "name": "Internal Notes & Handoff System",
+      "description": "Per-client and per-appointment notes visible to relevant team members. Pin important notes, use templates, and create handoff checklists between staff.",
+      "layer": 5,
+      "priority": "high",
+      "acceptance_criteria": [
+        "Notes can be added to client profiles and individual appointments by any team member",
+        "Important notes can be pinned to appear at the top of a client's profile",
+        "Note templates are available for common scenarios (allergies, preferences, special needs)",
+        "Handoff checklists ensure complete information transfer when a client switches providers"
+      ]
+    },
+    {
+      "name": "Role-Based Access Control",
+      "description": "Predefined roles (Owner, Manager, Staff, Front Desk) with granular permissions for scheduling, payments, client data, settings, and a full audit log.",
+      "layer": 5,
+      "priority": "critical",
+      "acceptance_criteria": [
+        "Four predefined roles ship out of the box with sensible default permissions",
+        "Permissions are granular: view/edit/delete per resource type (clients, appointments, payments, settings)",
+        "Staff members only see their own schedule and assigned clients unless given broader access",
+        "All permission-sensitive actions are recorded in an immutable audit log"
+      ]
+    },
+    {
+      "name": "Cancellation Policy Builder",
+      "description": "Visual editor for creating tiered cancellation policies with configurable grace periods, refund percentages, and penalty fees. Preview as clients see it.",
+      "layer": 3,
+      "priority": "high",
+      "acceptance_criteria": [
+        "Policies can define multiple tiers (e.g., full refund >48h, 50% refund 24-48h, no refund <24h)",
+        "Different policies can be assigned to different service types",
+        "A live preview shows exactly how the policy appears on the booking page",
+        "Grace period after appointment start time is configurable before a no-show is triggered"
+      ]
+    },
+    {
+      "name": "Client Import/Export",
+      "description": "Bulk import clients from CSV with intelligent field mapping and duplicate detection. Export client lists, history, and financial data. Migration wizards for common platforms.",
+      "layer": 6,
+      "priority": "high",
+      "acceptance_criteria": [
+        "CSV upload with drag-and-drop and automatic column-to-field mapping suggestions",
+        "Duplicate detection flags potential matches for review before import completes",
+        "Full client data (profiles, history, balances) exportable as CSV or JSON",
+        "Guided migration wizard available for Square Appointments, Acuity, and Calendly"
+      ]
+    },
+    {
+      "name": "Advanced Search & Filtering",
+      "description": "Full-text search across clients, appointments, and notes. Multi-criteria filters with saved presets and a quick-filter sidebar on all list views.",
+      "layer": 6,
+      "priority": "high",
+      "acceptance_criteria": [
+        "Global search returns results across clients, appointments, notes, and services in under 500ms",
+        "Filters support multiple criteria: date range, service, provider, status, tags, custom fields",
+        "Filter presets can be saved, named, and shared with team members",
+        "All list views include a collapsible sidebar with quick-filter controls"
+      ]
+    },
+    {
+      "name": "Custom Fields",
+      "description": "Add business-specific fields to client profiles and appointment records. Support text, number, date, dropdown, checkbox, and file upload types.",
+      "layer": 6,
+      "priority": "medium",
+      "acceptance_criteria": [
+        "Custom fields can be created with six field types: text, number, date, dropdown, checkbox, file",
+        "Fields can be marked required or optional and scoped to specific service types",
+        "Custom field values appear in client profiles and are included in search/filter results",
+        "Custom fields can be added to booking intake forms"
+      ]
+    },
+    {
+      "name": "Bulk Operations",
+      "description": "Select multiple clients for bulk messaging or tag assignment. Bulk reschedule when a provider is unavailable. Batch invoice generation.",
+      "layer": 6,
+      "priority": "medium",
+      "acceptance_criteria": [
+        "Multi-select checkbox on client and appointment lists enables bulk action toolbar",
+        "Bulk messaging sends personalized SMS/email to selected clients with merge tags",
+        "Bulk reschedule reassigns all of a provider's appointments to another provider or new dates",
+        "Batch invoicing generates and optionally sends invoices for all selected outstanding balances"
+      ]
+    },
+    {
+      "name": "Multi-Location Support",
+      "description": "Manage multiple business locations from a single dashboard with per-location services, staff, availability, and reporting.",
+      "layer": 6,
+      "priority": "medium",
+      "acceptance_criteria": [
+        "New locations can be added with independent addresses, hours, and contact info",
+        "Services and staff can be assigned per-location or shared across locations",
+        "Clients can book at any location and their history is unified across all locations",
+        "Reporting can be filtered or aggregated by location"
+      ]
+    },
+    {
+      "name": "Operations Dashboard",
+      "description": "Real-time KPIs including utilization rate, no-show rate, revenue, and bookings. Daily/weekly/monthly trends with per-provider performance metrics.",
+      "layer": 7,
+      "priority": "high",
+      "acceptance_criteria": [
+        "Dashboard loads with real-time KPI cards: today's bookings, utilization %, no-show rate, revenue",
+        "Trend charts display daily/weekly/monthly data with year-over-year comparison toggle",
+        "Per-provider performance breakdown shows individual utilization, revenue, and client ratings",
+        "Dashboard widget layout is customizable via drag-and-drop"
+      ]
+    },
+    {
+      "name": "Revenue Analytics",
+      "description": "Revenue breakdowns by service, provider, location, and time period. Client lifetime value tracking, revenue forecasting, and CSV/PDF export.",
+      "layer": 7,
+      "priority": "high",
+      "acceptance_criteria": [
+        "Revenue can be sliced by service type, provider, location, and arbitrary date ranges",
+        "Average transaction value and client lifetime value calculate automatically",
+        "Revenue forecast projects next 30/60/90 days based on confirmed upcoming bookings",
+        "All reports are exportable as CSV and formatted PDF"
+      ]
+    },
+    {
+      "name": "No-Show & Cancellation Reports",
+      "description": "No-show rate trends by day of week, time of day, and service type. Repeat offender lists, deposit forfeiture reports, and cancellation reason analysis.",
+      "layer": 7,
+      "priority": "medium",
+      "acceptance_criteria": [
+        "No-show rate heatmap shows patterns by day of week and hour of day",
+        "Repeat no-show offender list ranks clients by no-show count with last contact date",
+        "Deposit collection and forfeiture totals are summarized with month-over-month trends",
+        "Cancellation reasons are categorized and charted for pattern identification"
+      ]
+    },
+    {
+      "name": "Calendar Sync",
+      "description": "Two-way sync with Google Calendar, Outlook, and Apple Calendar. Block personal events to prevent double-booking with per-provider connection settings.",
+      "layer": 8,
+      "priority": "high",
+      "acceptance_criteria": [
+        "OAuth connection flow for Google Calendar and Microsoft Outlook completes in under 30 seconds",
+        "New bookings and cancellations sync bidirectionally within 60 seconds",
+        "Personal calendar events block availability without exposing event details to the team",
+        "Each provider can connect their own calendar independently"
+      ]
+    },
+    {
+      "name": "Webhook & API Access",
+      "description": "RESTful API for all core resources with configurable webhooks for booking, cancellation, and payment events. API key management with rate limiting.",
+      "layer": 8,
+      "priority": "medium",
+      "acceptance_criteria": [
+        "RESTful API covers CRUD operations for clients, appointments, services, and payments",
+        "Webhooks can be configured for 10+ event types with retry logic on failure",
+        "API keys are manageable from settings with per-key rate limits and scoping",
+        "Interactive API documentation is available with a sandbox environment"
+      ]
+    },
+    {
+      "name": "Business Settings & Branding",
+      "description": "Configure business name, logo, colors, contact info, business hours, and holiday schedules. Customize booking page appearance and email templates.",
+      "layer": 0,
+      "priority": "critical",
+      "acceptance_criteria": [
+        "Business profile includes name, logo, brand colors, address, phone, and email",
+        "Business hours and holiday closures are configurable and enforced across all booking channels",
+        "Booking page URL, layout, and welcome messaging are customizable",
+        "Email templates use brand colors and logo automatically"
+      ]
+    },
+    {
+      "name": "Billing & Subscription Management",
+      "description": "Self-service plan management with upgrades, downgrades, and cancellations. Usage metering for appointments, SMS credits, and team seats.",
+      "layer": 0,
+      "priority": "critical",
+      "acceptance_criteria": [
+        "Users can upgrade, downgrade, or cancel their plan from the billing settings page",
+        "Usage meters display current consumption of appointments, SMS credits, and team seats",
+        "Invoice history is accessible with downloadable PDF receipts",
+        "Annual billing option provides a visible discount over monthly pricing"
+      ]
+    },
+    {
+      "name": "Guided Onboarding Wizard",
+      "description": "Step-by-step setup flow: business info, services, staff, availability, booking page. Includes import wizard and sample data option.",
+      "layer": 2,
+      "priority": "high",
+      "acceptance_criteria": [
+        "Onboarding wizard walks through 5 steps: business info → services → staff → availability → booking page",
+        "Each step can be skipped and revisited later from a progress checklist",
+        "Sample data can be loaded to explore features before entering real business data",
+        "Estimated setup time is displayed and the wizard completes in under 10 minutes"
+      ]
+    },
+    {
+      "name": "Mobile-Responsive Client Portal",
+      "description": "Clients view upcoming appointments, reschedule, cancel, pay balances, and rebook previous services from any device with push notification support.",
+      "layer": 2,
+      "priority": "critical",
+      "acceptance_criteria": [
+        "Client portal is fully functional on mobile, tablet, and desktop screen sizes",
+        "Clients can view, reschedule, and cancel upcoming appointments with policy enforcement",
+        "Payment history and outstanding balances are visible with one-click pay option",
+        "One-click rebooking allows clients to instantly schedule the same service with the same provider"
+      ]
+    },
+    {
+      "name": "Quick Actions & Keyboard Shortcuts",
+      "description": "Global command palette (Cmd/Ctrl+K) for instant access to clients, appointments, and actions. Configurable keyboard shortcuts for power users.",
+      "layer": 8,
+      "priority": "medium",
+      "acceptance_criteria": [
+        "Cmd/Ctrl+K opens a command palette with fuzzy search across clients, appointments, and actions",
+        "Keyboard shortcuts exist for new booking, check-in, and navigation between major views",
+        "Quick-action buttons on the dashboard provide one-click access to common workflows",
+        "Shortcut preferences are configurable per user from account settings"
+      ]
+    }
+  ],
+  "keywords": [
+    "appointment scheduling",
+    "no-show management",
+    "service business software",
+    "booking deposits",
+    "client management",
+    "staff scheduling",
+    "business operations",
+    "online booking",
+    "cancellation policy",
+    "service business automation"
+  ],
+  "subreddits": [
+    "smallbusiness",
+    "Entrepreneur",
+    "dentistry",
+    "physicaltherapy",
+    "Hair",
+    "fitness",
+    "AutoDetailing",
+    "massage"
+  ],
+  "color_primary": "#4F46E5",
+  "color_secondary": "#3730A3",
+  "hero": {
+    "headline": "Your Service Business, Running Without You",
+    "subheadline": "Eliminate no-shows with automatic deposits. Automate scheduling, reminders, and operations. Finally take a day off without losing revenue.",
+    "cta_text": "Start Free Trial",
+    "cta_url": "/signup"
+  },
+  "problem": {
+    "headline": "Your business can't survive a week without you",
+    "points": [
+      "25% of your appointment slots are lost to no-shows — and you have no way to collect deposits or automatically fill the gaps",
+      "You're juggling 5+ disconnected tools for scheduling, payments, reminders, and client management that don't share data",
+      "Every decision requires you personally: staff can't handle exceptions, clients call you directly, and taking a day off means lost revenue"
+    ]
+  },
+  "solution": {
+    "headline": "One platform to run your entire front office",
+    "description": "FlowDesk combines appointment scheduling, no-show protection with automatic deposits, client management, staff coordination, and operational workflows into a single platform. Your team knows exactly what to do, clients book and pay seamlessly, and you finally get your time back."
+  },
+  "faq": [
+    {
+      "question": "Is there a free plan?",
+      "answer": "Yes. FlowDesk is free for solo operators with up to 50 appointments per month. Paid plans start at $29/mo for teams and unlock deposits, automation, and multi-provider scheduling."
+    },
+    {
+      "question": "What types of businesses is FlowDesk for?",
+      "answer": "Any appointment-based service business: medical and dental practices, salons, barbershops, fitness studios, auto repair shops, consulting firms, tutoring centers, and professional services."
+    },
+    {
+      "question": "How does no-show protection work?",
+      "answer": "You set deposit requirements per service (flat fee or percentage). Clients pay when booking. If they no-show past your grace period, the deposit is automatically forfeited and the slot is offered to the next person on your waitlist."
+    },
+    {
+      "question": "Can I migrate from my current scheduling tool?",
+      "answer": "Yes. FlowDesk includes guided migration wizards for Square Appointments, Acuity Scheduling, and Calendly. You can also bulk-import clients and history via CSV."
+    },
+    {
+      "question": "Does FlowDesk handle payments?",
+      "answer": "FlowDesk integrates with Stripe to collect deposits, full payments, and tips. We support credit cards, Apple Pay, and Google Pay. Refunds process automatically based on your cancellation policy."
+    }
+  ],
+  "total_score": 783,
+  "monetization_mode": "free"
+}
