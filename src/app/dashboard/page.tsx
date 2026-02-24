@@ -1,16 +1,16 @@
 import { redirect } from 'next/navigation';
+import Link from 'next/link';
 import { getSession } from '@/lib/auth';
 
 export default async function DashboardPage() {
   const user = await getSession();
   if (!user) redirect('/login');
 
-  // Stats cards - placeholder for Codex to populate
   const stats = [
-    { label: 'Total Items', value: '0', change: '+0%' },
-    { label: 'Active', value: '0', change: '+0%' },
-    { label: 'Completed', value: '0', change: '+0%' },
-    { label: 'This Week', value: '0', change: '+0%' },
+    { label: 'Active services', value: '—', change: 'Manage catalog' },
+    { label: 'Bookings today', value: '—', change: 'Live view' },
+    { label: 'No-show rate', value: '—', change: 'Last 30 days' },
+    { label: 'Team coverage', value: '—', change: 'On schedule' },
   ];
 
   return (
@@ -30,8 +30,25 @@ export default async function DashboardPage() {
         ))}
       </div>
 
-      <div className="rounded-lg border border-gray-200 bg-white p-8 text-center dark:border-gray-700 dark:bg-gray-800">
-        <p className="text-gray-600 dark:text-gray-400">Create your first item to get started.</p>
+      <div className="grid gap-4 lg:grid-cols-2">
+        <div className="rounded-lg border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
+          <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Service catalog</h2>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+            Add services, pricing, and durations so clients book the right slot.
+          </p>
+          <Link href="/dashboard/services" className="mt-4 inline-flex items-center text-sm font-semibold text-brand-600">
+            Manage services →
+          </Link>
+        </div>
+        <div className="rounded-lg border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
+          <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Next steps</h2>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+            Invite your team, set business hours, and launch your booking page.
+          </p>
+          <Link href="/dashboard/settings" className="mt-4 inline-flex items-center text-sm font-semibold text-brand-600">
+            Complete setup →
+          </Link>
+        </div>
       </div>
     </div>
   );

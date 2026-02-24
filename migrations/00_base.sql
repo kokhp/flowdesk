@@ -44,6 +44,19 @@ CREATE TABLE IF NOT EXISTS usage (
   UNIQUE(user_id, feature, period)
 );
 
+-- Services
+CREATE TABLE IF NOT EXISTS services (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  name TEXT NOT NULL,
+  description TEXT NOT NULL,
+  duration_minutes INTEGER NOT NULL,
+  price NUMERIC(10, 2) NOT NULL,
+  active BOOLEAN DEFAULT TRUE NOT NULL,
+  created_at TIMESTAMPTZ DEFAULT NOW() NOT NULL,
+  updated_at TIMESTAMPTZ DEFAULT NOW() NOT NULL
+);
+
 -- Indexes
 CREATE INDEX IF NOT EXISTS idx_users_email ON users(email);
 CREATE INDEX IF NOT EXISTS idx_sessions_token ON sessions(token);
@@ -53,6 +66,7 @@ CREATE INDEX IF NOT EXISTS idx_subscriptions_user_id ON subscriptions(user_id);
 CREATE INDEX IF NOT EXISTS idx_subscriptions_stripe_customer ON subscriptions(stripe_customer_id);
 CREATE INDEX IF NOT EXISTS idx_subscriptions_stripe_sub ON subscriptions(stripe_subscription_id);
 CREATE INDEX IF NOT EXISTS idx_usage_user_feature ON usage(user_id, feature, period);
+CREATE INDEX IF NOT EXISTS idx_services_user_id ON services(user_id);
 
 -- Auto-update updated_at
 CREATE OR REPLACE FUNCTION update_updated_at()
@@ -66,6 +80,8 @@ $$ LANGUAGE plpgsql;
 CREATE TRIGGER users_updated_at BEFORE UPDATE ON users
   FOR EACH ROW EXECUTE FUNCTION update_updated_at();
 CREATE TRIGGER subscriptions_updated_at BEFORE UPDATE ON subscriptions
+  FOR EACH ROW EXECUTE FUNCTION update_updated_at();
+CREATE TRIGGER services_updated_at BEFORE UPDATE ON services
   FOR EACH ROW EXECUTE FUNCTION update_updated_at();
 
 -- Clean expired sessions
