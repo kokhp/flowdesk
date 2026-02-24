@@ -1,0 +1,61 @@
+{
+  "name": "InvoiceChaser",
+  "slug": "invoice-chaser",
+  "tagline": "Stop chasing late payments manually",
+  "description": "Automated invoice follow-up tool for freelancers and small businesses. Send polite payment reminders, track invoice status, and get paid faster.",
+  "category": "BETTER_ALTERNATIVE",
+  "total_score": 142,
+  "pain_point": "Freelancers spend hours each week manually following up on unpaid invoices",
+  "target_audience": "Freelancers, small business owners, agencies",
+  "competitors": ["FreshBooks", "QuickBooks", "Wave"],
+  "competitive_gaps": ["Too expensive for solo freelancers", "Overly complex", "No automated reminders in free tier"],
+  "features": [
+    {
+      "name": "Invoice Creation",
+      "description": "Create professional invoices with customizable templates",
+      "layer": 0,
+      "priority": "critical",
+      "acceptance_criteria": ["User can create invoice with line items", "PDF export works", "Email sending works"]
+    },
+    {
+      "name": "Automated Reminders",
+      "description": "Schedule and send automatic payment reminder emails",
+      "layer": 0,
+      "priority": "critical",
+      "acceptance_criteria": ["Reminders sent on schedule", "Customizable templates", "Stop when paid"]
+    }
+  ],
+  "monetization_mode": "free",
+  "keywords": ["invoice", "payment", "freelance", "billing", "reminders"],
+  "subreddits": ["freelance", "smallbusiness", "Entrepreneur"],
+  "color_primary": "#2563EB",
+  "color_secondary": "#1E40AF",
+  "hero": {
+    "headline": "Stop Chasing Late Payments",
+    "subheadline": "Automated invoice reminders that get you paid faster. No more awkward follow-up emails.",
+    "cta_text": "Start Free",
+    "cta_url": "/signup"
+  },
+  "problem": {
+    "headline": "Late payments cost you time and money",
+    "points": [
+      "You spend 3+ hours per week writing follow-up emails",
+      "30% of invoices are paid late, killing your cash flow",
+      "Existing tools charge $25+/mo for basic reminder features"
+    ]
+  },
+  "solution": {
+    "headline": "Automate the awkward part",
+    "description": "InvoiceChaser sends polite, escalating payment reminders on your behalf. You set it and forget it."
+  },
+  "faq": [
+    {
+      "question": "Is it really free?",
+      "answer": "Yes! InvoiceChaser is completely free to use with no limits."
+    },
+    {
+      "question": "Can I customize the reminder emails?",
+      "answer": "Absolutely. You can edit every template, set custom schedules, and personalize the tone."
+    }
+  ]
+}
